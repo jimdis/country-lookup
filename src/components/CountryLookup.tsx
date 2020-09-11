@@ -24,10 +24,12 @@ const CountryLookup = ({ onSelect }: Props) => {
     onSelect(alpha3Code);
   };
 
-  const selectOptions: SelectOption[] = countryNames.map((countryName) => ({
-    value: countryName.alpha3Code,
-    label: countryName.name,
-  }));
+  const selectOptions: SelectOption[] = countryNames
+    .map((countryName) => ({
+      value: countryName.alpha3Code,
+      label: countryName.name,
+    }))
+    .sort((a, b) => a.label.localeCompare(b.label));
 
   return (
     <div>
