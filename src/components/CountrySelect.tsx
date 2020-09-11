@@ -1,6 +1,7 @@
 import React from "react";
 import Select, { ValueType } from "react-select";
 import useCountrySelect from "./useCountrySelect";
+import Loader from "./Loader";
 import styles from "./CountrySelect.module.css";
 
 type SelectOption = {
@@ -17,7 +18,7 @@ const CountrySelect = ({ onSelect }: Props) => {
 
   //TODO: Add pretty loader & error message
   if (!countryNames) {
-    return loading ? <div>Loading...</div> : error ? <div>{error}</div> : null;
+    return loading ? <Loader /> : error ? <div>{error}</div> : null;
   }
 
   const handleChange = (selectedOption: ValueType<SelectOption>) => {

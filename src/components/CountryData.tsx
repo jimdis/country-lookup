@@ -3,6 +3,7 @@ import { GiMoneyStack, GiModernCity, GiPerson } from "react-icons/gi";
 import Card from "./Card";
 import CurrencyConverter from "./CurrencyConverter";
 import useCountryData from "./useCountryData";
+import Loader from "./Loader";
 import styles from "./CountryData.module.css";
 
 type Props = {
@@ -13,8 +14,12 @@ const CountryData = ({ alpha3Code }: Props) => {
   const { country, loading, error } = useCountryData(alpha3Code);
 
   //TODO: Add pretty loader & error message
+  if (loading) {
+    return <Loader />;
+  }
+
   if (!country) {
-    return loading ? <div>Loading...</div> : error ? <div>{error}</div> : null;
+    return error ? <div>{error}</div> : null;
   }
 
   const shouldRoundPopulation = country.population > 1e6;
