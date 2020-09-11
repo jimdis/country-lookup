@@ -23,7 +23,7 @@ const useCountryData = (alpha3Code: string) => {
   }, [alpha3Code]);
 
   return {
-    countryData,
+    country: countryData,
     loading,
     error,
   };

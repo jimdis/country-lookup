@@ -4,7 +4,8 @@ import CountryData from "../components/CountryData";
 import styles from "./CountryLookupPage.module.css";
 
 const CountryLookupPage = () => {
-  const [selectedCountryCode, setSelectedCountryCode] = useState<string>();
+  //FIXME: Remove default!!
+  const [selectedCountryCode, setSelectedCountryCode] = useState<string>("AFG");
 
   return (
     <div className={styles.root}>

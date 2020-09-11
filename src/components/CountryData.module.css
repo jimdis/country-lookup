@@ -1,0 +1,46 @@
+.header {
+  display: flex;
+  align-items: center;
+}
+.flag {
+  width: 96px;
+  min-width: 48px;
+  margin-right: 16px;
+}
+.flag img {
+  width: 100%;
+  height: auto;
+}
+.heading {
+  font-size: 2em;
+}
+.body {
+}
+.list {
+  max-width: 480px;
+}
+.listItem {
+  padding: 8px 0;
+}
+.listItemHeading {
+  color: grey;
+  font-size: 0.75em;
+  text-transform: uppercase;
+  padding-left: 4px;
+}
+.listItemContent {
+  display: flex;
+  align-items: center;
+}
+.listItemIcon {
+  margin-right: 16px;
+}
+
+@media only screen and (max-width: 600px) {
+  .flag {
+    width: 48px;
+  }
+  .heading {
+    font-size: 1.5em;
+  }
+}
