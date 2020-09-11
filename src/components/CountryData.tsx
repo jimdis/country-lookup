@@ -41,7 +41,7 @@ const CountryData = ({ alpha3Code }: Props) => {
     {
       heading: "Capital",
       Icon: GiModernCity,
-      label: country.capital,
+      label: country.capital || "n/a",
     },
     {
       heading: "Currency",
