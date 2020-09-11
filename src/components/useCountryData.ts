@@ -1,32 +1,32 @@
 import { useState, useEffect } from "react";
-import { CountryName } from "../types";
+import { CountryData } from "../types";
 import * as api from "../api/restCountries";
 
-const useCountryLookup = () => {
+const useCountryData = (alpha3Code: string) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
-  const [countryNames, setCountryNames] = useState<CountryName[]>();
+  const [countryData, setCountryData] = useState<CountryData>();
 
   useEffect(() => {
-    const loadCountryNames = async () => {
+    const loadCountryData = async () => {
       setLoading(true);
       try {
-        const fetchedCountryNames = await api.getAllCountryNames();
-        setCountryNames(fetchedCountryNames);
+        const fetchedCountryData = await api.getCountryData(alpha3Code);
+        setCountryData(fetchedCountryData);
         setLoading(false);
       } catch (e) {
         setError("Something went wrong :(");
         setLoading(false);
       }
     };
-    loadCountryNames();
-  }, []);
+    loadCountryData();
+  }, [alpha3Code]);
 
   return {
-    countryNames,
+    countryData,
     loading,
     error,
   };
 };
 
-export default useCountryLookup;
+export default useCountryData;
