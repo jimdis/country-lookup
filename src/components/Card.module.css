@@ -1,0 +1,13 @@
+.card {
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+}
+.title {
+  padding: 16px;
+  background-color: lightsteelblue;
+  font-size: 1.5em;
+  font-weight: bold;
+}
+.content {
+  padding: 16px;
+}

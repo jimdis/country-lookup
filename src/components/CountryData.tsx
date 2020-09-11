@@ -1,5 +1,6 @@
 import React from "react";
 import { GiMoneyStack, GiModernCity, GiPerson } from "react-icons/gi";
+import Card from "./Card";
 import CurrencyConverter from "./CurrencyConverter";
 import useCountryData from "./useCountryData";
 import styles from "./CountryData.module.css";
@@ -55,8 +56,8 @@ const CountryData = ({ alpha3Code }: Props) => {
         </div>
         <h1 className={styles.heading}>{country.name}</h1>
       </div>
-      <div className={styles.body}>
-        <div className={styles.list}>
+      <div className={styles.card}>
+        <Card title="Country data">
           {list.map((item) => (
             <div key={item.heading} className={styles.listItem}>
               <div className={styles.listItemHeading}>{item.heading}</div>
@@ -68,8 +69,12 @@ const CountryData = ({ alpha3Code }: Props) => {
               </div>
             </div>
           ))}
-        </div>
-        <CurrencyConverter currencyCode={mainCurrency.code} />
+        </Card>
+      </div>
+      <div className={styles.card}>
+        <Card>
+          <CurrencyConverter currencyCode={mainCurrency.code} />
+        </Card>
       </div>
     </div>
   );

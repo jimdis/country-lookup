@@ -14,13 +14,14 @@
 .heading {
   font-size: 2em;
 }
-.body {
+.card {
+  width: 400px;
 }
-.list {
-  max-width: 480px;
+.card:not(:last-child) {
+  margin-bottom: 16px;
 }
-.listItem {
-  padding: 8px 0;
+.listItem:not(:last-child) {
+  margin-bottom: 8px;
 }
 .listItemHeading {
   color: grey;
