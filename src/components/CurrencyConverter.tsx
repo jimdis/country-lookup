@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import useCurrencyConverter from "./useCurrencyConverter";
+import Loader from "./Loader";
 import styles from "./CurrencyConverter.module.css";
 import classes from "./CurrencyConverter.module.css";
 
@@ -46,7 +47,7 @@ const CurrencyConverter = ({ currencyCode, currencySymbol }: Props) => {
   return (
     <div className={classes.form}>
       {loading ? (
-        "Laddar..."
+        <Loader />
       ) : error ? (
         error
       ) : (

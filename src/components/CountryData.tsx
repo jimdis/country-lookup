@@ -13,7 +13,6 @@ type Props = {
 const CountryData = ({ alpha3Code }: Props) => {
   const { country, loading, error } = useCountryData(alpha3Code);
 
-  //TODO: Add pretty loader & error message
   if (loading) {
     return <Loader />;
   }

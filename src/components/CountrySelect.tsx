@@ -16,7 +16,6 @@ type Props = {
 const CountrySelect = ({ onSelect }: Props) => {
   const { countryNames, loading, error } = useCountrySelect();
 
-  //TODO: Add pretty loader & error message
   if (!countryNames) {
     return loading ? <Loader /> : error ? <div>{error}</div> : null;
   }
