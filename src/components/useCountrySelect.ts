@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { CountryName } from "../types";
 import * as api from "../api/restCountries";
 
-const useCountryLookup = () => {
+const useCountrySelect = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [countryNames, setCountryNames] = useState<CountryName[]>();
@@ -29,4 +29,4 @@ const useCountryLookup = () => {
   };
 };
 
-export default useCountryLookup;
+export default useCountrySelect;

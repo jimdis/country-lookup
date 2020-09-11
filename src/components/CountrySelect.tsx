@@ -1,6 +1,6 @@
 import React from "react";
 import Select, { ValueType } from "react-select";
-import useCountryLookup from "./useCountryLookup";
+import useCountrySelect from "./useCountrySelect";
 
 type SelectOption = {
   value: string;
@@ -11,8 +11,8 @@ type Props = {
   onSelect: (alpha3Code: string) => void;
 };
 
-const CountryLookup = ({ onSelect }: Props) => {
-  const { countryNames, loading, error } = useCountryLookup();
+const CountrySelect = ({ onSelect }: Props) => {
+  const { countryNames, loading, error } = useCountrySelect();
 
   //TODO: Add pretty loader & error message
   if (!countryNames) {
@@ -41,4 +41,4 @@ const CountryLookup = ({ onSelect }: Props) => {
   );
 };
 
-export default CountryLookup;
+export default CountrySelect;

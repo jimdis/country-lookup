@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CountryLookup from "../components/CountryLookup";
+import CountrySelect from "../components/CountrySelect";
 import CountryData from "../components/CountryData";
 import styles from "./CountryLookupPage.module.css";
 
@@ -8,7 +8,7 @@ const CountryLookupPage = () => {
 
   return (
     <div className={styles.root}>
-      <CountryLookup
+      <CountrySelect
         onSelect={(countryName) => setSelectedCountryCode(countryName)}
       />
       {selectedCountryCode && <CountryData alpha3Code={selectedCountryCode} />}
