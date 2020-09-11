@@ -9,6 +9,8 @@ const CountryLookupPage = () => {
 
   return (
     <div className={styles.root}>
+      <h1>Country Lookup</h1>
+      <h2>Lookup any country and enjoy some data!</h2>
       <CountrySelect
         onSelect={(countryName) => setSelectedCountryCode(countryName)}
       />

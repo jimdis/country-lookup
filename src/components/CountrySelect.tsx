@@ -1,6 +1,7 @@
 import React from "react";
 import Select, { ValueType } from "react-select";
 import useCountrySelect from "./useCountrySelect";
+import styles from "./CountrySelect.module.css";
 
 type SelectOption = {
   value: string;
@@ -32,7 +33,7 @@ const CountrySelect = ({ onSelect }: Props) => {
     .sort((a, b) => a.label.localeCompare(b.label));
 
   return (
-    <div>
+    <div className={styles.select}>
       <Select
         options={selectOptions}
         onChange={(option) => handleChange(option)}
