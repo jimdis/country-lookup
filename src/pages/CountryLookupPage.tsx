@@ -1,20 +1,17 @@
 import React, { useState } from "react";
-import { CountryName } from "../types";
 import CountryLookup from "../components/CountryLookup";
 import CountryData from "../components/CountryData";
 import styles from "./CountryLookupPage.module.css";
 
 const CountryLookupPage = () => {
-  const [selectedCountryName, setSelectedCountryName] = useState<CountryName>();
+  const [selectedCountryCode, setSelectedCountryCode] = useState<string>();
 
   return (
     <div className={styles.root}>
       <CountryLookup
-        onSelect={(countryName) => setSelectedCountryName(countryName)}
+        onSelect={(countryName) => setSelectedCountryCode(countryName)}
       />
-      {selectedCountryName && (
-        <CountryData alpha3Code={selectedCountryName.alpha3Code} />
-      )}
+      {selectedCountryCode && <CountryData alpha3Code={selectedCountryCode} />}
     </div>
   );
 };

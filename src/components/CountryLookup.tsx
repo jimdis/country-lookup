@@ -1,10 +1,16 @@
 import React from "react";
-import { CountryName } from "../types";
+import Select, { ValueType } from "react-select";
 import useCountryLookup from "./useCountryLookup";
 
-type Props = {
-  onSelect: (countryName: CountryName) => void;
+type SelectOption = {
+  value: string;
+  label: string;
 };
+
+type Props = {
+  onSelect: (alpha3Code: string) => void;
+};
+
 const CountryLookup = ({ onSelect }: Props) => {
   const { countryNames, loading, error } = useCountryLookup();
 
@@ -13,14 +19,22 @@ const CountryLookup = ({ onSelect }: Props) => {
     return loading ? <div>Loading...</div> : error ? <div>{error}</div> : null;
   }
 
+  const handleChange = (selectedOption: ValueType<SelectOption>) => {
+    const alpha3Code = (selectedOption as SelectOption).value;
+    onSelect(alpha3Code);
+  };
+
+  const selectOptions: SelectOption[] = countryNames.map((countryName) => ({
+    value: countryName.alpha3Code,
+    label: countryName.name,
+  }));
+
   return (
     <div>
-      {countryNames.map((countryName) => (
-        <div key={countryName.alpha3Code}>
-          {countryName.name}
-          <button onClick={() => onSelect(countryName)}>Select country</button>
-        </div>
-      ))}
+      <Select
+        options={selectOptions}
+        onChange={(option) => handleChange(option)}
+      />
     </div>
   );
 };
