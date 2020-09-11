@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 import useCurrencyConverter from "./useCurrencyConverter";
+import styles from "./CurrencyConverter.module.css";
+import classes from "./CurrencyConverter.module.css";
 
 type Props = {
   currencyCode: string;
+  currencySymbol: string;
 };
 
-const CurrencyConverter = ({ currencyCode }: Props) => {
+const CurrencyConverter = ({ currencyCode, currencySymbol }: Props) => {
   const [amountInSEK, setAmountInSEK] = useState<number>();
   const {
-    amountConverted,
+    originalAmount,
+    convertedAmount,
     loading,
     error,
     convertFromSEK,
@@ -22,27 +26,46 @@ const CurrencyConverter = ({ currencyCode }: Props) => {
     }
   };
 
+  const getResult = () => {
+    if (originalAmount && convertedAmount) {
+      const decimalPlaces = convertedAmount < 10 ? 1 : 0;
+      return (
+        <>
+          <strong>{originalAmount.toLocaleString()}</strong> kr is{" "}
+          <strong>
+            {convertedAmount.toLocaleString(undefined, {
+              maximumFractionDigits: decimalPlaces,
+            })}
+          </strong>{" "}
+          {currencySymbol}{" "}
+        </>
+      );
+    }
+  };
+
   return (
-    <div>
+    <div className={classes.form}>
       {loading ? (
         "Laddar..."
       ) : error ? (
         error
       ) : (
         <form onSubmit={handleSubmit}>
-          <label>Enter amount in SEK</label>
-          <input
-            type="number"
-            step="any"
-            required
-            value={amountInSEK || ""}
-            min="1"
-            onChange={(e) => setAmountInSEK(+e.target.value)}
-          />
-          <input type="submit" />
+          <div className={styles.row}>
+            <label>Enter amount in SEK</label>
+            <input
+              type="number"
+              step="any"
+              required
+              value={amountInSEK || ""}
+              min="1"
+              onChange={(e) => setAmountInSEK(+e.target.value)}
+            />
+          </div>
+          <input type="submit" value="Calculate" />
         </form>
       )}
-      <div>{amountConverted}</div>
+      {convertedAmount && <div className={styles.result}>{getResult()}</div>}
     </div>
   );
 };

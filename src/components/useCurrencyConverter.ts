@@ -9,7 +9,8 @@ const useCurrencyConverter = (currencyCode: string) => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
   const [exchangeRates, setExchangeRates] = useState<ExchangeRates>();
-  const [amountConverted, setAmountConverted] = useState<number>();
+  const [originalAmount, setOriginalAmount] = useState<number>();
+  const [convertedAmount, setConvertedAmount] = useState<number>();
 
   useEffect(() => {
     const loadExhangeRates = async () => {
@@ -32,7 +33,7 @@ const useCurrencyConverter = (currencyCode: string) => {
   }, []);
 
   useEffect(() => {
-    setAmountConverted(undefined);
+    setConvertedAmount(undefined);
   }, [currencyCode]);
 
   const convertFromSEK = (amount: number) => {
@@ -40,13 +41,15 @@ const useCurrencyConverter = (currencyCode: string) => {
       const eurRate = exchangeRates[currencyCode];
       const sekEurRate = exchangeRates["SEK"];
       if (eurRate && sekEurRate) {
-        setAmountConverted((amount / sekEurRate) * eurRate);
+        setConvertedAmount((amount / sekEurRate) * eurRate);
+        setOriginalAmount(amount);
       }
     }
   };
 
   return {
-    amountConverted,
+    originalAmount,
+    convertedAmount,
     convertFromSEK,
     loading,
     error,

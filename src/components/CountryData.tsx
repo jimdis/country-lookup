@@ -17,8 +17,6 @@ const CountryData = ({ alpha3Code }: Props) => {
     return loading ? <div>Loading...</div> : error ? <div>{error}</div> : null;
   }
 
-  console.log(country);
-
   const shouldRoundPopulation = country.population > 1e6;
 
   const population =
@@ -49,7 +47,7 @@ const CountryData = ({ alpha3Code }: Props) => {
   ];
 
   return (
-    <div>
+    <div className={styles.root}>
       <div className={styles.header}>
         <div className={styles.flag}>
           <img src={country.flag} alt={`Flag of ${country.name}`} />
@@ -72,8 +70,11 @@ const CountryData = ({ alpha3Code }: Props) => {
         </Card>
       </div>
       <div className={styles.card}>
-        <Card>
-          <CurrencyConverter currencyCode={mainCurrency.code} />
+        <Card title="Currency converter">
+          <CurrencyConverter
+            currencyCode={mainCurrency.code}
+            currencySymbol={mainCurrency.symbol}
+          />
         </Card>
       </div>
     </div>

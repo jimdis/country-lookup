@@ -1,6 +1,13 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 .header {
   display: flex;
   align-items: center;
+  margin: 16px 0;
+  min-width: 400px;
 }
 .flag {
   width: 96px;
@@ -43,5 +50,8 @@
   }
   .heading {
     font-size: 1.5em;
+  }
+  .card {
+    width: 100%;
   }
 }
