@@ -14,3 +14,7 @@ export type CountryData = {
     symbol: string;
   }[];
 };
+
+export type ExchangeRates = {
+  [key: string]: number | undefined;
+};

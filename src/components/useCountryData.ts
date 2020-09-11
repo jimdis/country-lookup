@@ -9,6 +9,7 @@ const useCountryData = (alpha3Code: string) => {
 
   useEffect(() => {
     const loadCountryData = async () => {
+      setError("");
       setLoading(true);
       try {
         const fetchedCountryData = await api.getCountryData(alpha3Code);
