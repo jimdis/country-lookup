@@ -11,7 +11,7 @@ const CountryLookupPage = () => {
       <h1>Country Lookup</h1>
       <h2>Lookup any country and enjoy some data!</h2>
       <CountrySelect
-        onSelect={(countryName) => setSelectedCountryCode(countryName)}
+        onSelect={(countryCode) => setSelectedCountryCode(countryCode)}
       />
       {selectedCountryCode && <CountryData alpha3Code={selectedCountryCode} />}
     </div>
