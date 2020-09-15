@@ -3,7 +3,6 @@ import { ExchangeRates } from "../types";
 import * as api from "../api/fixer";
 
 const STORAGE_KEY = "exchangeRates";
-const storedRates = sessionStorage.getItem(STORAGE_KEY);
 
 const useCurrencyConverter = (currencyCode: string) => {
   const [loading, setLoading] = useState(false);
@@ -11,6 +10,7 @@ const useCurrencyConverter = (currencyCode: string) => {
   const [exchangeRates, setExchangeRates] = useState<ExchangeRates>();
   const [originalAmount, setOriginalAmount] = useState<number>();
   const [convertedAmount, setConvertedAmount] = useState<number>();
+  const storedRates = sessionStorage.getItem(STORAGE_KEY);
 
   useEffect(() => {
     const loadExhangeRates = async () => {
@@ -30,7 +30,7 @@ const useCurrencyConverter = (currencyCode: string) => {
     } else {
       loadExhangeRates();
     }
-  }, []);
+  }, [storedRates]);
 
   useEffect(() => {
     setConvertedAmount(undefined);
